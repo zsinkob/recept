@@ -23,17 +23,17 @@ export default function Register() {
 
   return (
     <div className="max-w-md mx-auto mt-12">
-      <h2 className="text-xl font-semibold mb-4">Register</h2>
-      {success && <p className="text-green-600 mb-4">Registration successful! Redirecting to login...</p>}
+      <h2 className="text-xl font-semibold mb-4">Regisztráció</h2>
+      {success && <p className="text-green-600 mb-4">Sikeres regisztráció! Átirányítás...</p>}
       <form onSubmit={handle} className="space-y-4">
-        <input className="w-full p-2 border rounded" placeholder="Name (optional)" value={name} onChange={e=>setName(e.target.value)} />
+        <input className="w-full p-2 border rounded" placeholder="Név (opcionális)" value={name} onChange={e=>setName(e.target.value)} />
         <input className="w-full p-2 border rounded" placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
-        <input className="w-full p-2 border rounded" placeholder="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
-        <button className="px-4 py-2 bg-blue-600 text-white rounded">Register</button>
+        <input className="w-full p-2 border rounded" placeholder="Jelszó" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+        <button className="px-4 py-2 bg-blue-600 text-white rounded">Regisztráció</button>
         {error && <p className="text-red-600">{error}</p>}
       </form>
       <p className="mt-4 text-sm text-gray-600">
-        Already have an account? <Link to="/login" className="text-blue-600 underline">Login</Link>
+        Van már fiókod? <Link to="/login" className="text-blue-600 underline">Bejelentkezés</Link>
       </p>
     </div>
   )

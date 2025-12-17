@@ -46,15 +46,15 @@ export default function EditRecipe() {
     navigate(`/recipes/${id}`);
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Betöltés...</div>;
 
   return (
     <form onSubmit={submit} className="space-y-4">
-      <h1 className="text-2xl font-bold mb-4">Edit Recipe</h1>
+      <h1 className="text-2xl font-bold mb-4">Recept szerkesztése</h1>
       
       <input
         className="w-full p-2 border rounded"
-        placeholder="Title"
+        placeholder="Cím"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
@@ -62,18 +62,18 @@ export default function EditRecipe() {
       
       <textarea
         className="w-full p-2 border rounded"
-        placeholder="Description (optional)"
+        placeholder="Leírás (opcionális)"
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       />
 
       <div>
-        <h4 className="font-semibold mb-2">Ingredients</h4>
+        <h4 className="font-semibold mb-2">Hozzávalók</h4>
         {ingredients.map((ing, idx) => (
           <div key={idx} className="flex gap-2 mb-2">
             <input
               className="flex-1 p-2 border rounded"
-              placeholder="Name"
+              placeholder="Név"
               value={ing.name}
               onChange={(e) => {
                 const arr = [...ingredients];
@@ -83,7 +83,7 @@ export default function EditRecipe() {
             />
             <input
               className="w-32 p-2 border rounded"
-              placeholder="Amount"
+              placeholder="Mennyiség"
               value={ing.amount || ''}
               onChange={(e) => {
                 const arr = [...ingredients];
@@ -96,7 +96,7 @@ export default function EditRecipe() {
               onClick={() => setIngredients(ingredients.filter((_, i) => i !== idx))}
               className="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200"
             >
-              Remove
+              Eltávolítás
             </button>
           </div>
         ))}
@@ -105,16 +105,16 @@ export default function EditRecipe() {
           onClick={() => setIngredients([...ingredients, { name: '', amount: '' }])}
           className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
         >
-          Add Ingredient
+          Hozzávaló hozzáadása
         </button>
       </div>
 
       <div>
-        <h4 className="font-semibold mb-2">Image</h4>
+        <h4 className="font-semibold mb-2">Kép</h4>
         {currentImageUrl && !imageFile && (
           <div className="mb-2">
             <img src={currentImageUrl} alt="Current" className="w-32 h-32 object-cover rounded mb-2" />
-            <p className="text-sm text-gray-600">Current image</p>
+            <p className="text-sm text-gray-600">Jelenlegi kép</p>
           </div>
         )}
         <input
@@ -124,17 +124,17 @@ export default function EditRecipe() {
           className="block"
         />
         {imageFile && (
-          <p className="text-sm text-green-600 mt-1">New image selected: {imageFile.name}</p>
+          <p className="text-sm text-green-600 mt-1">Új kép kiválasztva: {imageFile.name}</p>
         )}
       </div>
 
       <div>
-        <h4 className="font-semibold mb-2">Steps</h4>
+        <h4 className="font-semibold mb-2">Lépések</h4>
         {steps.map((s, idx) => (
           <div key={idx} className="mb-2">
             <textarea
               className="w-full p-2 border rounded"
-              placeholder="Step description"
+              placeholder="Lépés leírása"
               value={s.text}
               rows={2}
               onChange={(e) => {
@@ -148,7 +148,7 @@ export default function EditRecipe() {
               onClick={() => setSteps(steps.filter((_, i) => i !== idx))}
               className="px-3 py-1 mt-1 bg-red-100 text-red-700 rounded hover:bg-red-200"
             >
-              Remove
+              Eltávolítás
             </button>
           </div>
         ))}
@@ -157,20 +157,20 @@ export default function EditRecipe() {
           onClick={() => setSteps([...steps, { order: steps.length, text: '' }])}
           className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
         >
-          Add Step
+          Lépés hozzáadása
         </button>
       </div>
 
       <div className="flex gap-4">
         <button type="submit" className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
-          Save Changes
+          Változtatások mentése
         </button>
         <button
           type="button"
           onClick={() => navigate(`/recipes/${id}`)}
           className="px-6 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
         >
-          Cancel
+          Mégse
         </button>
       </div>
     </form>

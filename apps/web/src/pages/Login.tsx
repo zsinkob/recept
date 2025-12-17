@@ -21,15 +21,15 @@ export default function Login() {
 
   return (
     <div className="max-w-md mx-auto mt-12">
-      <h2 className="text-xl font-semibold mb-4">Login</h2>
+      <h2 className="text-xl font-semibold mb-4">Bejelentkezés</h2>
       <form onSubmit={handle} className="space-y-4">
         <input className="w-full p-2 border rounded" placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
-        <input className="w-full p-2 border rounded" placeholder="Password" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
-        <button className="px-4 py-2 bg-blue-600 text-white rounded">Login</button>
+        <input className="w-full p-2 border rounded" placeholder="Jelszó" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+        <button className="px-4 py-2 bg-blue-600 text-white rounded">Bejelentkezés</button>
         {error && <p className="text-red-600">{error}</p>}
       </form>
       <p className="mt-4 text-sm text-gray-600">
-        Don't have an account? <Link to="/register" className="text-blue-600 underline">Register</Link>
+        Nincs még fiókod? <Link to="/register" className="text-blue-600 underline">Regisztráció</Link>
       </p>
     </div>
   )

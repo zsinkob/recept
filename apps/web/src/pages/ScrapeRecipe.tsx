@@ -25,13 +25,13 @@ export default function ScrapeRecipe() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Scrape Recipe from URL</h1>
+      <h1 className="text-3xl font-bold mb-6">Recept importálása URL-ről</h1>
       
       <div className="max-w-2xl">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label htmlFor="url" className="block text-sm font-medium mb-2">
-              Recipe URL (streetkitchen.hu)
+              Recept URL (streetkitchen.hu)
             </label>
             <input
               id="url"
@@ -56,7 +56,7 @@ export default function ScrapeRecipe() {
               disabled={loading}
               className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {loading ? 'Scraping...' : 'Scrape Recipe'}
+              {loading ? 'Importálás...' : 'Recept importálása'}
             </button>
             
             <button
@@ -64,18 +64,18 @@ export default function ScrapeRecipe() {
               onClick={() => navigate('/recipes')}
               className="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400"
             >
-              Cancel
+              Mégse
             </button>
           </div>
         </form>
 
         <div className="mt-8 p-6 bg-yellow-50 rounded-lg border border-yellow-200">
-          <h2 className="font-semibold mb-2">How to use:</h2>
+          <h2 className="font-semibold mb-2">Használat:</h2>
           <ol className="list-decimal list-inside space-y-1 text-sm">
-            <li>Go to streetkitchen.hu and find a recipe you want to save</li>
-            <li>Copy the full URL from your browser's address bar</li>
-            <li>Paste it into the field above and click "Scrape Recipe"</li>
-            <li>The recipe will be automatically imported with all ingredients and steps</li>
+            <li>Menj a streetkitchen.hu oldalra és keress egy receptet</li>
+            <li>Másold ki a teljes URL-t a böngésző címsorából</li>
+            <li>Illeszd be a fenti mezőbe és kattints a "Recept importálása" gombra</li>
+            <li>A recept automatikusan importálódik az összes hozzávalóval és lépéssel</li>
           </ol>
         </div>
       </div>

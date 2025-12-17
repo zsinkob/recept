@@ -26,8 +26,8 @@ export default function RecipeList() {
   return (
     <div>
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold">Your Recipes</h2>
-        <Link to="/new" className="px-3 py-1 bg-green-600 text-white rounded">New</Link>
+        <h2 className="text-xl font-semibold">Receptjeim</h2>
+        <Link to="/new" className="px-3 py-1 bg-green-600 text-white rounded">Új</Link>
       </div>
       {error && <p className="text-red-600 mb-4">{error}</p>}
       <div className="grid grid-cols-1 gap-4">

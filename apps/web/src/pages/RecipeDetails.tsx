@@ -24,7 +24,7 @@ export default function RecipeDetails(){
 
   const handleDelete = async () => {
     if (!id) return;
-    if (confirm('Are you sure you want to delete this recipe?')) {
+    if (confirm('Biztosan törölni szeretnéd ezt a receptet?')) {
       await deleteRecipe(id);
       navigate('/');
     }
@@ -41,13 +41,13 @@ export default function RecipeDetails(){
             to={`/recipes/${id}/edit`}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
           >
-            Edit
+            Szerkesztés
           </Link>
           <button
             onClick={handleDelete}
             className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
           >
-            Delete
+            Törlés
           </button>
         </div>
       </div>
@@ -55,7 +55,7 @@ export default function RecipeDetails(){
       <p className="text-gray-700 mb-4">{recipe.description}</p>
 
       <section className="mb-6">
-        <h3 className="font-semibold mb-2">Ingredients</h3>
+        <h3 className="font-semibold mb-2">Hozzávalók</h3>
         <ul className="space-y-2">
           {recipe.ingredients.map((ing:any)=> (
             <li key={ing.id} className="flex items-center">
@@ -69,7 +69,7 @@ export default function RecipeDetails(){
       </section>
 
       <section>
-        <h3 className="font-semibold mb-2">Preparation</h3>
+        <h3 className="font-semibold mb-2">Elkészítés</h3>
         <ol className="space-y-2">
           {recipe.steps.sort((a:any,b:any)=>a.order-b.order).map((s:any)=> (
             <li key={s.id} className="flex items-start">

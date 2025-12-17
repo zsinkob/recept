@@ -19,15 +19,15 @@ function AppContent() {
         <nav className="flex gap-4 items-center">
           {token ? (
             <>
-              <Link to="/" className="text-gray-700 hover:text-gray-900">Recipes</Link>
-              <Link to="/new" className="text-gray-700 hover:text-gray-900">New Recipe</Link>
-              <Link to="/scrape" className="text-gray-700 hover:text-gray-900">Scrape</Link>
-              <button onClick={logout} className="text-sm text-gray-600 hover:text-gray-900">Logout</button>
+              <Link to="/" className="text-gray-700 hover:text-gray-900">Receptek</Link>
+              <Link to="/new" className="text-gray-700 hover:text-gray-900">Új recept</Link>
+              <Link to="/scrape" className="text-gray-700 hover:text-gray-900">Importálás</Link>
+              <button onClick={logout} className="text-sm text-gray-600 hover:text-gray-900">Kijelentkezés</button>
             </>
           ) : (
             <>
-              <Link to="/login" className="text-gray-700 hover:text-gray-900">Login</Link>
-              <Link to="/register" className="text-gray-700 hover:text-gray-900">Register</Link>
+              <Link to="/login" className="text-gray-700 hover:text-gray-900">Bejelentkezés</Link>
+              <Link to="/register" className="text-gray-700 hover:text-gray-900">Regisztráció</Link>
             </>
           )}
         </nav>
