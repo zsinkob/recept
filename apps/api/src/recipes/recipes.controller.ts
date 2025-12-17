@@ -5,11 +5,15 @@ import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
+import { ScraperService } from '../scraper/scraper.service';
 
 @UseGuards(AuthGuard('jwt'))
 @Controller('recipes')
 export class RecipesController {
-  constructor(private recipesService: RecipesService) {}
+  constructor(
+    private recipesService: RecipesService,
+    private scraperService: ScraperService,
+  ) {}
 
   @Post('upload')
   @UseInterceptors(FileInterceptor('image', {
@@ -32,6 +36,35 @@ export class RecipesController {
   async uploadImage(@UploadedFile() file: Express.Multer.File) {
     if (!file) throw new BadRequestException('No file uploaded');
     return { imageUrl: `/uploads/recipes/${file.filename}` };
+  }
+
+  @Post('scrape')
+  async scrapeRecipe(@Body() body: { url: string }, @Request() req: any) {
+    const { url } = body;
+    if (!url) {
+      throw new BadRequestException('URL is required');
+    }
+
+    // Scrape the recipe
+    const scrapedData = await this.scraperService.scrapeRecipe(url);
+
+    // Create recipe from scraped data
+    const createDto: CreateRecipeDto = {
+      title: scrapedData.title,
+      imageUrl: scrapedData.imageFileName 
+        ? `/uploads/recipes/${scrapedData.imageFileName}` 
+        : undefined,
+      ingredients: scrapedData.ingredients.map((ing) => ({
+        amount: ing.amount,
+        name: ing.name,
+      })),
+      steps: scrapedData.steps.map((step, index) => ({
+        order: index,
+        text: step,
+      })),
+    };
+
+    return this.recipesService.create(req.user.userId, createDto);
   }
 
   @Get()

@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import RecipeList from './pages/RecipeList'
 import RecipeDetails from './pages/RecipeDetails'
 import NewRecipe from './pages/NewRecipe'
+import ScrapeRecipe from './pages/ScrapeRecipe'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 
 function AppContent() {
@@ -18,6 +19,8 @@ function AppContent() {
           {token ? (
             <>
               <Link to="/" className="text-gray-700 hover:text-gray-900">Recipes</Link>
+              <Link to="/new" className="text-gray-700 hover:text-gray-900">New Recipe</Link>
+              <Link to="/scrape" className="text-gray-700 hover:text-gray-900">Scrape</Link>
               <button onClick={logout} className="text-sm text-gray-600 hover:text-gray-900">Logout</button>
             </>
           ) : (
@@ -35,6 +38,7 @@ function AppContent() {
           <Route path="/" element={token ? <RecipeList/> : <Navigate to="/login" replace />} />
           <Route path="/recipes/:id" element={token ? <RecipeDetails/> : <Navigate to="/login" replace />} />
           <Route path="/new" element={token ? <NewRecipe/> : <Navigate to="/login" replace />} />
+          <Route path="/scrape" element={token ? <ScrapeRecipe/> : <Navigate to="/login" replace />} />
         </Routes>
       </main>
     </div>

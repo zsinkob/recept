@@ -22,6 +22,11 @@ export async function uploadImage(form: FormData) {
   return res.data;
 }
 
+export async function scrapeRecipe(url: string) {
+  const res = await apiClient.post('/recipes/scrape', { url });
+  return res.data;
+}
+
 export async function updateRecipe(id: string, data: any) {
   const res = await apiClient.put(`/recipes/${id}`, data);
   return res.data;
