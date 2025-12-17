@@ -15,6 +15,13 @@ export async function createRecipe(data: any) {
   return res.data;
 }
 
+export async function uploadImage(form: FormData) {
+  const res = await apiClient.post('/recipes/upload', form, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return res.data;
+}
+
 export async function updateRecipe(id: string, data: any) {
   const res = await apiClient.put(`/recipes/${id}`, data);
   return res.data;

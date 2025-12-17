@@ -7,11 +7,24 @@ export default function NewRecipe(){
   const [description, setDescription] = useState('');
   const [ingredients, setIngredients] = useState<{name:string,amount?:string}[]>([{name:'',amount:''}]);
   const [steps, setSteps] = useState<{order:number,text:string}[]>([{order:1,text:''}]);
+  const [imageFile, setImageFile] = useState<File | null>(null);
   const navigate = useNavigate();
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const payload = { title, description, ingredients, steps };
+    let imageUrl: string | undefined = undefined;
+    try {
+      if (imageFile) {
+        const form = new FormData();
+        form.append('image', imageFile);
+        const upload = await (await import('../api/recipes')).uploadImage(form);
+        imageUrl = upload.imageUrl;
+      }
+    } catch (err) {
+      console.error('Image upload failed', err);
+    }
+
+    const payload = { title, description, ingredients, steps, imageUrl };
     const res = await createRecipe(payload);
     navigate(`/recipes/${res.id}`);
   };
@@ -35,6 +48,11 @@ export default function NewRecipe(){
           </div>
         ))}
         <button type="button" onClick={()=> setIngredients([...ingredients, {name:'',amount:''}])} className="px-3 py-1 bg-gray-200 rounded">Add Ingredient</button>
+      </div>
+
+      <div>
+        <h4 className="font-semibold mb-2">Image (optional)</h4>
+        <input type="file" accept="image/*" onChange={e=> setImageFile(e.target.files?.[0] ?? null)} />
       </div>
 
       <div>
