@@ -12,9 +12,7 @@ async function bootstrap() {
   app.use(cookieParser());
 
   // serve uploads statically
-  app.useStaticAssets(join(__dirname, '..', '..', 'uploads'), {
-    prefix: '/uploads/',
-  } as any);
+  app.use('/uploads', express.static(join(__dirname, '..', 'uploads')));
 
   await app.listen(port);
   console.log(`API listening on http://localhost:${port}`);
