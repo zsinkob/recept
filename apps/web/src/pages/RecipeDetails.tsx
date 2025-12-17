@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchRecipe } from '../api/recipes';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import { fetchRecipe, deleteRecipe } from '../api/recipes';
 
 export default function RecipeDetails(){
   const { id } = useParams();
+  const navigate = useNavigate();
   const [recipe, setRecipe] = useState<any | null>(null);
   const [checkedIngredients, setCheckedIngredients] = useState<Record<string, boolean>>({});
   const [checkedSteps, setCheckedSteps] = useState<Record<number, boolean>>({});
@@ -21,11 +22,35 @@ export default function RecipeDetails(){
     }).catch(()=>setRecipe(null));
   },[id]);
 
+  const handleDelete = async () => {
+    if (!id) return;
+    if (confirm('Are you sure you want to delete this recipe?')) {
+      await deleteRecipe(id);
+      navigate('/');
+    }
+  };
+
   if(!recipe) return <div>Loading...</div>
 
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-2">{recipe.title}</h2>
+      <div className="flex justify-between items-start mb-4">
+        <h2 className="text-2xl font-bold">{recipe.title}</h2>
+        <div className="flex gap-2">
+          <Link
+            to={`/recipes/${id}/edit`}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+          >
+            Edit
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          >
+            Delete
+          </button>
+        </div>
+      </div>
       {recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.title} className="w-full h-64 object-cover rounded mb-4" />}
       <p className="text-gray-700 mb-4">{recipe.description}</p>
 

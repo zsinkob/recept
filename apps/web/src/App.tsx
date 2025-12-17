@@ -5,6 +5,7 @@ import Register from './pages/Register'
 import RecipeList from './pages/RecipeList'
 import RecipeDetails from './pages/RecipeDetails'
 import NewRecipe from './pages/NewRecipe'
+import EditRecipe from './pages/EditRecipe'
 import ScrapeRecipe from './pages/ScrapeRecipe'
 import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom'
 
@@ -37,6 +38,7 @@ function AppContent() {
           <Route path="/register" element={<Register/>} />
           <Route path="/" element={token ? <RecipeList/> : <Navigate to="/login" replace />} />
           <Route path="/recipes/:id" element={token ? <RecipeDetails/> : <Navigate to="/login" replace />} />
+          <Route path="/recipes/:id/edit" element={token ? <EditRecipe/> : <Navigate to="/login" replace />} />
           <Route path="/new" element={token ? <NewRecipe/> : <Navigate to="/login" replace />} />
           <Route path="/scrape" element={token ? <ScrapeRecipe/> : <Navigate to="/login" replace />} />
         </Routes>
