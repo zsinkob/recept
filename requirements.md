@@ -1,0 +1,9 @@
+-modern, reponsive, mobile first react frontend nest js backend
+-landing page is to list and browse my recipies
+-receipe details: picture, ingridients, preparation steps
+-receipe should have a unique url
+-during cooking, the ingridients should be clickable to mark added with a checkbox
+-preparation steps should be also clickable with checkbox to mark finished
+-store data in postgres relational database, receipe list per user, receipe does not need to be shared between users
+-recipe can be added manually
+-recepice can be scraped from streenkithcen.hu by entering the url, the screper should download the ingridient list, the preparation steps and the image
