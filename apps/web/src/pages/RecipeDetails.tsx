@@ -35,7 +35,7 @@ export default function RecipeDetails(){
   return (
     <div>
       <div className="flex justify-between items-start mb-4">
-        <h2 className="text-2xl font-bold">{recipe.title}</h2>
+        <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">{recipe.title}</h2>
         <div className="flex gap-2">
           <Link
             to={`/recipes/${id}/edit`}
@@ -52,31 +52,31 @@ export default function RecipeDetails(){
         </div>
       </div>
       {recipe.imageUrl && <img src={recipe.imageUrl} alt={recipe.title} className="w-full h-64 object-cover rounded mb-4" />}
-      <p className="text-gray-700 mb-4">{recipe.description}</p>
+      <p className="text-gray-700 dark:text-gray-300 mb-4">{recipe.description}</p>
 
       <section className="mb-6">
-        <h3 className="font-semibold mb-2">Hozzávalók</h3>
+        <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">Hozzávalók</h3>
         <ul className="space-y-2">
           {recipe.ingredients.map((ing:any)=> (
             <li key={ing.id} className="flex items-center">
               <input type="checkbox" className="mr-2" checked={!!checkedIngredients[ing.id]} onChange={()=>{
                 setCheckedIngredients({...checkedIngredients, [ing.id]: !checkedIngredients[ing.id]});
               }} />
-              <span>{ing.amount ? `${ing.amount} ` : ''}{ing.name}</span>
+              <span className="text-gray-700 dark:text-gray-300">{ing.amount ? `${ing.amount} ` : ''}{ing.name}</span>
             </li>
           ))}
         </ul>
       </section>
 
       <section>
-        <h3 className="font-semibold mb-2">Elkészítés</h3>
+        <h3 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">Elkészítés</h3>
         <ol className="space-y-2">
           {recipe.steps.sort((a:any,b:any)=>a.order-b.order).map((s:any)=> (
             <li key={s.id} className="flex items-start">
               <input type="checkbox" className="mr-2 mt-1" checked={!!checkedSteps[s.order]} onChange={()=>{
                 setCheckedSteps({...checkedSteps, [s.order]: !checkedSteps[s.order]});
               }} />
-              <p>{s.text}</p>
+              <p className="text-gray-700 dark:text-gray-300">{s.text}</p>
             </li>
           ))}
         </ol>

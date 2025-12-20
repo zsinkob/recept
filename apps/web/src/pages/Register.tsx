@@ -23,17 +23,17 @@ export default function Register() {
 
   return (
     <div className="max-w-md mx-auto mt-12">
-      <h2 className="text-xl font-semibold mb-4">Regisztráció</h2>
-      {success && <p className="text-green-600 mb-4">Sikeres regisztráció! Átirányítás...</p>}
+      <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Regisztráció</h2>
+      {success && <p className="text-green-600 dark:text-green-400 mb-4">Sikeres regisztráció! Átirányítás...</p>}
       <form onSubmit={handle} className="space-y-4">
-        <input className="w-full p-2 border rounded" placeholder="Név (opcionális)" value={name} onChange={e=>setName(e.target.value)} />
-        <input className="w-full p-2 border rounded" placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
-        <input className="w-full p-2 border rounded" placeholder="Jelszó" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
-        <button className="px-4 py-2 bg-blue-600 text-white rounded">Regisztráció</button>
-        {error && <p className="text-red-600">{error}</p>}
+        <input className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none" placeholder="Név (opcionális)" value={name} onChange={e=>setName(e.target.value)} />
+        <input className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none" placeholder="Email" type="email" value={email} onChange={e=>setEmail(e.target.value)} required />
+        <input className="w-full p-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none" placeholder="Jelszó" type="password" value={password} onChange={e=>setPassword(e.target.value)} required />
+        <button className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Regisztráció</button>
+        {error && <p className="text-red-600 dark:text-red-400">{error}</p>}
       </form>
-      <p className="mt-4 text-sm text-gray-600">
-        Van már fiókod? <Link to="/login" className="text-blue-600 underline">Bejelentkezés</Link>
+      <p className="mt-4 text-sm text-gray-600 dark:text-gray-400">
+        Van már fiókod? <Link to="/login" className="text-blue-600 dark:text-blue-400 underline hover:text-blue-700 dark:hover:text-blue-300">Bejelentkezés</Link>
       </p>
     </div>
   )

@@ -1,8 +1,6 @@
 {
   "name": "recept-monorepo",
   "private": true,
-  "version": "0.1.0",
-  "packageManager": "pnpm@8.0.0",
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -10,12 +8,12 @@
   "scripts": {
     "dev": "turbo run dev",
     "build": "turbo run build",
-    "start": "turbo run start",
-    "db:up": "docker-compose up -d",
-    "db:down": "docker-compose down"
+    "db:migrate": "cd apps/api && npx prisma migrate dev",
+    "db:generate": "cd apps/api && npx prisma generate",
+    "db:studio": "cd apps/api && npx prisma studio"
   },
   "devDependencies": {
-    "turbo": "^1.8.4",
-    "typescript": "^5.0.0"
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2"
   }
 }

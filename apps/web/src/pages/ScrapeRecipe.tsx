@@ -25,12 +25,12 @@ export default function ScrapeRecipe() {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-6">Recept importálása URL-ről</h1>
+      <h1 className="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">Recept importálása URL-ről</h1>
       
       <div className="max-w-2xl">
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label htmlFor="url" className="block text-sm font-medium mb-2">
+            <label htmlFor="url" className="block text-sm font-medium mb-2 text-gray-900 dark:text-gray-100">
               Recept URL (streetkitchen.hu)
             </label>
             <input
@@ -39,13 +39,13 @@ export default function ScrapeRecipe() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="https://streetkitchen.hu/receptek/..."
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
               required
             />
           </div>
 
           {error && (
-            <div className="bg-red-50 text-red-700 px-4 py-3 rounded-lg">
+            <div className="bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-400 px-4 py-3 rounded-lg border border-red-200 dark:border-red-900/50">
               {error}
             </div>
           )}
@@ -62,16 +62,16 @@ export default function ScrapeRecipe() {
             <button
               type="button"
               onClick={() => navigate('/recipes')}
-              className="bg-gray-300 text-gray-700 px-6 py-2 rounded-lg hover:bg-gray-400"
+              className="bg-gray-300 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-6 py-2 rounded-lg hover:bg-gray-400 dark:hover:bg-gray-600"
             >
               Mégse
             </button>
           </div>
         </form>
 
-        <div className="mt-8 p-6 bg-yellow-50 rounded-lg border border-yellow-200">
-          <h2 className="font-semibold mb-2">Használat:</h2>
-          <ol className="list-decimal list-inside space-y-1 text-sm">
+        <div className="mt-8 p-6 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg border border-yellow-200 dark:border-yellow-900/50">
+          <h2 className="font-semibold mb-2 text-gray-900 dark:text-gray-100">Használat:</h2>
+          <ol className="list-decimal list-inside space-y-1 text-sm text-gray-700 dark:text-gray-300">
             <li>Menj a streetkitchen.hu oldalra és keress egy receptet</li>
             <li>Másold ki a teljes URL-t a böngésző címsorából</li>
             <li>Illeszd be a fenti mezőbe és kattints a "Recept importálása" gombra</li>
